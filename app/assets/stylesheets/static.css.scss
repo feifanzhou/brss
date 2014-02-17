@@ -1,0 +1,33 @@
+// Place all the styles related to the static controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body.static {
+  #loginAndCreate {
+    display: inline-block;
+    width: 260px;
+    form {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+      &#new_user {
+        #user_fname, #user_lname {
+          width: 128px;
+        }
+      }
+    }
+    .LoginAux {
+      // display: inline-block;
+      font-weight: 500;
+      &#toggleCreateAccount, &#toggleLogin {
+        float: left;
+      }
+      &#toggleLogin {
+        // display: none;
+      }
+      &#forgotPassword {
+        float: right;
+      }
+    }
+  }
+}

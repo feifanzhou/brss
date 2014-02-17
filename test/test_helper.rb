@@ -12,4 +12,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def create_random_user
+    User.create(fname: 'Jon', lname: 'Smith', email: "u#{ rand(1000000) }@brss.com", password: 'letmein')
+  end
 end
