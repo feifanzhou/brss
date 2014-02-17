@@ -1,6 +1,11 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on('click', '#actionButtons .btn', ->
+  $('#actionButtons').addClass('Hidden')
+  $('#loginAndCreate').removeClass('Hidden')
+)
+
 $(document).on('click', '#loginAndCreate input[type="submit"]', (event) ->
   event.preventDefault()
   $('#loginAndCreate .alert').addClass('Hidden')

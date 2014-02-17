@@ -2,31 +2,135 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body.static {
-  #loginAndCreate {
-    display: inline-block;
-    width: 260px;
-    form {
-      width: 100%;
-      input {
-        width: 100%;
-      }
-      &#new_user {
-        #user_fname, #user_lname {
-          width: 128px;
+  background: image-url('cornell2.jpg') no-repeat center center fixed;
+  @include vendor-prefix(background-size, cover);
+  position: relative;
+  #sidebar {
+    background: white;
+    bottom: 0;
+    left: -180px;
+    padding: 1.5em;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 180px;
+    @include vendor-prefix(transition, left 0.5s);
+    #bigRed {
+      color: $red;
+      font-family: $Palatino;
+      font-size: 2.25em;
+      margin-bottom: 0;
+    }
+    #ss {
+      font-size: 1em;
+      font-weight: 300;
+      margin: 0;
+    }
+    #nav {
+      margin-top: 2.5em;
+      ul {
+        list-style: none;
+        padding-left: 0;
+        li {
+          color: #777;
+          margin: 0.6em 0;
+          @include vendor-prefix(transition, color 0.25s);
+          &:hover {
+            color: #333;
+            cursor: pointer;
+          }
         }
       }
     }
-    .LoginAux {
-      // display: inline-block;
-      font-weight: 500;
-      &#toggleCreateAccount, &#toggleLogin {
-        float: left;
+  }
+  #container {
+    margin-left: 0px;
+    // padding: 2em 0;
+    @include vendor-prefix(transition, margin-left 0.5s);
+    #getStarted {
+      // margin: auto;
+      position: relative;
+      // width: 400px;
+      #hero {
+        margin: 2em auto 3em auto;
+        text-align: center;
+        width: 640px;
+        .hr {
+          display: inline-block;
+        }
+        h1 {
+          display: inline-block;
+          font-size: 2.65em;
+          font-weight: 300;
+          margin: 0.25em;
+        }
+        p {
+          margin: 0;
+        }
       }
-      &#toggleLogin {
-        // display: none;
+      #actionButtons {
+        margin: auto;
+        width: 505px;
+        .btn {
+          font-size: 1.25em;
+          height: 2.5em;
+          margin: 0 10px;
+          width: 230px;
+        }
       }
-      &#forgotPassword {
-        float: right;
+      #loginAndCreate {
+        margin: auto;
+        width: 260px;
+        form {
+          width: 100%;
+          input {
+            width: 100%;
+          }
+          &#new_user {
+            #user_fname, #user_lname {
+              width: 128px;
+            }
+          }
+        }
+        .LoginAux {
+          // display: inline-block;
+          font-weight: 500;
+          &#toggleCreateAccount, &#toggleLogin {
+            float: left;
+          }
+          &#toggleLogin {
+            // display: none;
+          }
+          &#forgotPassword {
+            float: right;
+          }
+        }
+      }
+      #learnMore {
+        background: transparentize(white, 0.35);
+        border-radius: 50px;
+        color: #444;
+        line-height: 100px;
+        margin: auto;
+        opacity: 0;
+        text-align: center;
+        width: 100px;
+        @include vendor-prefix(transition, opacity 0.5s);
+      }
+    }
+    #info {
+      background: white;
+      margin-top: 120px;
+      padding: 2em 0;
+      section {
+        border-left: 2px solid #CCC;
+        margin: 0 1em;
+        padding: 0 1em;
+        h1 {
+          color: $red;
+          font-family: $Palatino;
+          margin: 0;
+        }
       }
     }
   }

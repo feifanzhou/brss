@@ -1,31 +1,71 @@
-<section id='loginAndCreate'>
-  <div class='Hidden alert alert-error'>
-    <p id='errorText'></p>
-    <ul id='errorsList'></ul>
-  </div>
-  <%= form_for User.new, url: login_path, html: { id: 'login_form' } do |f| %>
-    <div class='form-group'>
-      <%= f.text_field :email, placeholder: 'Email address' %>
-      <%= f.password_field :password, placeholder: 'Password' %>
+<section id='sidebar'>
+  <h1 id='bigRed'>Big Red</h1>
+  <h2 id='ss'>Shipping &amp; storage</h2>
+  <nav id='nav'>
+    <ul>
+      <li>Get started</li>
+      <li>Services</li>
+      <li>FAQs</li>
+      <li>Jobs</li>
+      <li>Contact</li>
+    </ul>
+  </nav>
+</section>
+<section id='container'>
+  <section id='getStarted'>
+    <div id='hero'>
+      <h1><span class='hr'></span>Big Red Shipping &amp; Storage<span class='hr'></span></h1>
+      <p>Cornell's premiere shipping and storage service</p>
     </div>
-    <div class='form-group'>
-      <%= f.submit 'Login' %>
+    <div id='actionButtons'>
+      <button class='btn btn-primary'>Create appointment</button>
+      <button class='btn btn-primary'>Manage account</button>
     </div>
-  <% end %>
-  <%= form_for User.new, html: { class: 'Hidden' } do |f| %>
-    <div class="Hidden form-group" id='userNames'>
-      <%= f.text_field :fname, placeholder: 'First name' %>
-      <%= f.text_field :lname, placeholder: 'Last name' %>
-    </div>
-    <div class='form-group'>
-      <%= f.text_field :email, placeholder: 'Email address' %>
-      <%= f.password_field :password, placeholder: 'Password' %>
-    </div>
-    <div class="form-group">
-      <%= f.submit 'Create account' %>
-    </div>
-  <% end %>
-  <p class='Small Link LoginAux' id='toggleCreateAccount'>Create account</p>
-  <p class='Hidden Small Link LoginAux' id='toggleLogin'>Login</p>
-  <p class='Small Link LoginAux' id='forgotPassword'>Forgot password</p>
+    <section class='Hidden' id='loginAndCreate'>
+      <div class='Hidden alert alert-error'>
+        <p id='errorText'></p>
+        <ul id='errorsList'></ul>
+      </div>
+      <%= form_for User.new, url: login_path, html: { id: 'login_form' } do |f| %>
+        <div class='form-group'>
+          <%= f.text_field :email, placeholder: 'Email address' %>
+          <%= f.password_field :password, placeholder: 'Password' %>
+        </div>
+        <div class='form-group'>
+          <%= f.submit 'Login' %>
+        </div>
+      <% end %>
+      <%= form_for User.new, html: { class: 'Hidden' } do |f| %>
+        <div class="Hidden form-group" id='userNames'>
+          <%= f.text_field :fname, placeholder: 'First name' %>
+          <%= f.text_field :lname, placeholder: 'Last name' %>
+        </div>
+        <div class='form-group'>
+          <%= f.text_field :email, placeholder: 'Email address' %>
+          <%= f.password_field :password, placeholder: 'Password' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Create account' %>
+        </div>
+      <% end %>
+      <p class='Small Link LoginAux' id='toggleCreateAccount'>Create account</p>
+      <p class='Hidden Small Link LoginAux' id='toggleLogin'>Login</p>
+      <p class='Small Link LoginAux' id='forgotPassword'>Forgot password</p>
+    </section>
+    <div id='learnMore'>Learn more</div>
+  </section>
+  <section id='info'>
+    <section id='services'>
+      <h1>Services</h1>
+    </section>
+    <section id='faqs'>
+      <h1>FAQs</h1>
+    </section>
+    <section id='jobs'>
+      <h1>Jobs</h1>
+    </section>
+    <section id='contact'>
+      <h1>Contact</h1>
+    </section>
+  </section>
 </section>

@@ -1,8 +1,14 @@
 $red: #B31B1B;
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+$Palatino: 'Palatino', 'Palatino Linotype', serif;
 
+* {
+  box-sizing: border-box;
+  line-height: 1.2em;
+}
 body {
-  font-family: 'Ubuntu', 'Frutiger Roman', 'Helvetica Neue', sans-serif;
+  font-family: 'Lato', 'Frutiger Roman', 'Helvetica Neue', sans-serif;
 }
 @mixin vendor-prefix($name, $argument) {
   #{$name}: #{ $argument };
@@ -38,6 +44,39 @@ $panel-border-radius: 4px;
   ul, li {
     &:first-child {
       margin-bottom: 0;
+    }
+  }
+}
+.btn {
+  background: white;
+  border: 1px solid transparentize(black, 0.75);
+  border-radius: 4px;
+  border-top-color: lighten(transparentize(black, 0.75), 25%);
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  // height: 32px;
+  color: #666;
+  font-weight: 700;
+  margin: 2px auto;
+  min-height: 0;
+  padding: 8px 10px;
+  @include vendor-prefix(transition, "border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+  padding-top: 7px;
+  &:active, &:focus {
+    border-color: transparentize(black, 0.75);
+    @include vendor-prefix(box-shadow, "inset 0 1px 2px rgba(0,0,0,0.25)");
+    outline: none;
+  }
+  &:hover {
+    @include vendor-prefix(box-shadow, "inset 0 1px 1px rgba(0,0,0,0.10)");
+    cursor: pointer;
+  }
+  &.btn-primary {
+    background: $red;
+    color: white;
+    &:hover {
+      background: darken($red, 5%);
     }
   }
 }
@@ -82,6 +121,7 @@ input[type='submit'] {
   }
   &:hover {
     @include vendor-prefix(box-shadow, "inset 0 1px 1px rgba(0,0,0,0.10)");
+    background: darken($red, 5%);
     cursor: pointer;
   }
 }
