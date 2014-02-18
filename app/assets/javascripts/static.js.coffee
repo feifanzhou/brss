@@ -1,6 +1,13 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on('click', '#nav a', (event) ->
+  event.preventDefault()
+  $('html, body').animate({
+    scrollTop: $($(this).attr('href')).offset().top
+  }, 1000)
+)
+
 $(document).on('click', '#actionButtons .btn', ->
   $('#actionButtons').addClass('Hidden')
   $('#loginAndCreate').removeClass('Hidden')
@@ -53,4 +60,8 @@ $(document).on('click', '#toggleLogin', ->
   ), 400)
   $('#toggleCreateAccount').removeClass('Hidden')
   $('#toggleLogin').addClass('Hidden')
+)
+
+$(document).on('click', '#learnMore', ->
+  $('body, html').animate({ scrollTop: $(window).height() + 'px' }, 1000)
 )
