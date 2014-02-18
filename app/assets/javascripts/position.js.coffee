@@ -4,6 +4,6 @@ $ -> (
   setTimeout(( ->
     $('#learnMore').css('opacity', 1)
     $('#sidebar').css('left', '0px')
-    $('#container').css('margin-left', '180px')
+    $('.static #container').css('margin-left', '180px')
   ), 250)
 )
