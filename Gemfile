@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 1.2'
 group :development do
   gem 'annotate'
   gem 'guard-livereload'
-  gem 'figaro'
+  # gem 'figaro'
 end
 
 group :doc do
