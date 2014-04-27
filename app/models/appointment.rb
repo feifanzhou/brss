@@ -29,6 +29,8 @@
 #
 
 class Appointment < ActiveRecord::Base
+  validates :appointment_type, presence: true  # App requires appointment_type to not crash
+
   belongs_to :contract
 
   def as_json(options = {})
