@@ -18,8 +18,11 @@ class Contract < ActiveRecord::Base
   has_many :appointments
   has_many :items
 
+  def dropoff_appointment
+    Appointment.find_by_contract_id_and_appointment_type(self.id, 'dropoff')
+  end
   def dropoff_date
-    appt = Appointment.find_by_contract_id_and_appointment_type(self.id, 'dropoff')
+    appt = dropoff_appointment
     appt.blank? ? nil : appt.date
   end
 

@@ -1,7 +1,6 @@
 class AppointmentsController < ApplicationController
   skip_before_action :verify_authenticity_token
   def update
-    puts appointment_params.to_s
     appt = Appointment.find(params[:id])
     if appt.blank?
       render json: {
