@@ -1,0 +1,65 @@
+# == Schema Information
+#
+# Table name: appointments
+#
+#  id                  :integer          not null, primary key
+#  appointment_id      :string(255)
+#  date                :date
+#  insurance_cost      :integer
+#  address             :string(255)
+#  notes               :text
+#  on_campus           :boolean
+#  request_date        :date
+#  coupon_code         :string(255)
+#  price_match         :boolean
+#  referrer            :string(255)
+#  pre_arrival         :boolean
+#  pre_arrival_address :string(255)
+#  contract_id         :integer
+#  at_counter          :boolean
+#  term_ends           :date
+#  term_count          :integer
+#  created_at          :datetime
+#  updated_at          :datetime
+#  status              :string(255)
+#  appointment_type    :string(255)
+#  is_cancelled        :boolean
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appointment_id: MyString
+  date: 2014-04-26
+  insurance_cost: 1
+  address: MyString
+  notes: MyText
+  on_campus: false
+  request_date: 2014-04-26
+  coupon_code: MyString
+  price_match: false
+  referrer: MyString
+  pre_arrival: false
+  pre_arrival_address: MyString
+  contract_id: 1
+  at_counter: false
+  term_ends: 2014-04-26
+  term_count: 1
+
+two:
+  appointment_id: MyString
+  date: 2014-04-26
+  insurance_cost: 1
+  address: MyString
+  notes: MyText
+  on_campus: false
+  request_date: 2014-04-26
+  coupon_code: MyString
+  price_match: false
+  referrer: MyString
+  pre_arrival: false
+  pre_arrival_address: MyString
+  contract_id: 1
+  at_counter: false
+  term_ends: 2014-04-26
+  term_count: 1

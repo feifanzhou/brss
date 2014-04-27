@@ -32,6 +32,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# Parse JSON data
+gem 'json'
+
 group :development do
   gem 'annotate'
   gem 'guard-livereload'

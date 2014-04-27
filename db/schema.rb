@@ -11,10 +11,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140216045934) do
+ActiveRecord::Schema.define(version: 20140427023653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: true do |t|
+    t.string   "appointment_id"
+    t.date     "date"
+    t.integer  "insurance_cost"
+    t.string   "address"
+    t.text     "notes"
+    t.boolean  "on_campus"
+    t.date     "request_date"
+    t.string   "coupon_code"
+    t.boolean  "price_match"
+    t.string   "referrer"
+    t.boolean  "pre_arrival"
+    t.string   "pre_arrival_address"
+    t.integer  "contract_id"
+    t.boolean  "at_counter"
+    t.date     "term_ends"
+    t.integer  "term_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
+    t.string   "appointment_type"
+    t.boolean  "is_cancelled"
+  end
+
+  create_table "contracts", force: true do |t|
+    t.integer  "user_id"
+    t.string   "contract_id"
+    t.string   "contract_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "notes"
+    t.boolean  "is_cancelled"
+  end
+
+  create_table "items", force: true do |t|
+    t.integer  "contract_id"
+    t.string   "item_type"
+    t.string   "description"
+    t.text     "notes"
+    t.decimal  "weight"
+    t.string   "pallet"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "box_id"
+    t.boolean  "is_deleted"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email"
@@ -24,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140216045934) do
     t.string   "address1"
     t.string   "address2"
     t.string   "city"
-    t.string   "state",           limit: 2
+    t.string   "state",            limit: 2
     t.string   "remember_token"
     t.string   "zip"
     t.string   "phone"
@@ -34,6 +81,14 @@ ActiveRecord::Schema.define(version: 20140216045934) do
     t.boolean  "is_active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "net_id"
+    t.string   "gender",           limit: 1
+    t.string   "school"
+    t.string   "major"
+    t.string   "grad_year",        limit: 4
+    t.date     "dob"
+    t.boolean  "is_international"
+    t.boolean  "should_spam"
   end
 
 end
