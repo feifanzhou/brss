@@ -26,7 +26,11 @@ class Contract < ActiveRecord::Base
     appt.blank? ? nil : appt.date
   end
 
+  def active_items
+    Item.where( contract_id: self.id, is_deleted: false )
+  end
+
   def as_json(options = {})
-    super(except: [:created_at, :updated_at, :user_id]).merge({ dropoff_date: self.dropoff_date, appointments: self.appointments, items: self.items, user: self.user })
+    super(except: [:created_at, :updated_at, :user_id]).merge({ dropoff_date: self.dropoff_date, appointments: self.appointments, items: self.active_items, user: self.user })
   end
 end
