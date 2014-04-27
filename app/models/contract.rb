@@ -14,11 +14,16 @@
 
 class Contract < ActiveRecord::Base
   belongs_to :user
-  
+
   has_many :appointments
   has_many :items
 
+  def dropoff_date
+    appt = Appointment.find_by_contract_id_and_appointment_type(self.id, 'dropoff')
+    appt.blank? ? nil : appt.date
+  end
+
   def as_json(options = {})
-    super(except: [:created_at, :updated_at, :user_id]).merge({ appointments: self.appointments, items: self.items, user: self.user })
+    super(except: [:created_at, :updated_at, :user_id]).merge({ dropoff_date: self.dropoff_date, appointments: self.appointments, items: self.items, user: self.user })
   end
 end

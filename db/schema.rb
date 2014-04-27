@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427023653) do
+ActiveRecord::Schema.define(version: 20140427181039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20140427023653) do
     t.string   "status"
     t.string   "appointment_type"
     t.boolean  "is_cancelled"
+    t.integer  "timeslot_number"
+    t.string   "timeslot_text"
   end
 
   create_table "contracts", force: true do |t|

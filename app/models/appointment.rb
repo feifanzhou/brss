@@ -24,6 +24,8 @@
 #  status              :string(255)
 #  appointment_type    :string(255)
 #  is_cancelled        :boolean
+#  timeslot_number     :integer
+#  timeslot_text       :string(255)
 #
 
 class Appointment < ActiveRecord::Base

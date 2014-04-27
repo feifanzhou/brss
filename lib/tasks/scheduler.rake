@@ -47,6 +47,8 @@ task :get_latest => :environment do
                request_date: request_date,
                status: appointment['status_text'],
                appointment_type: appointment['type_text'],
+               timeslot_number: appointment['timeslot'].to_i,
+               timeslot_text: appointment['timeslot_text'],
                is_cancelled: false
              )
     end if !contract['appointments'].blank?
