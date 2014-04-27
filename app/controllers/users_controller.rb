@@ -2,15 +2,21 @@ class UsersController < ApplicationController
   include ApplicationHelper
 
   def create
-    u = User.create(user_params)
+    u = User.new(user_params)
+    u.is_admin = params[:user][:is_admin].blank? ? false : params[:user][:is_admin] == 'true'
+    u.save
     success = !u.blank?
     save_login(u)
     errors = u.errors.full_messages
     success = false if !errors.blank?
-    render json: {
-      success: success,
-      errors: errors
-    }
+    if !params[:user][:redirect_back].blank? 
+      redirect_to params[:user][:redirect_back]
+    else
+      render json: {
+        success: success,
+        errors: errors
+      }
+    end
   end
   def login
     u = User.find_by_email(params[:user][:email].downcase)

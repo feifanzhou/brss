@@ -13,5 +13,12 @@
 #
 
 class Contract < ActiveRecord::Base
+  belongs_to :user
+  
+  has_many :appointments
   has_many :items
+
+  def as_json(options = {})
+    super(except: [:created_at, :updated_at, :user_id]).merge({ appointments: self.appointments, items: self.items, user: self.user })
+  end
 end

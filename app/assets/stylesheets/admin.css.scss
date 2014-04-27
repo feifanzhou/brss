@@ -1,0 +1,33 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#createAdmin {
+  height: 293px;
+  width: 300px;
+  #new_user {
+    display: inline-block;
+    font-weight: 300;
+    width: 100%;
+    div {
+      margin-bottom: 0.25em;
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+    #userFname, #userLname {
+      display: inline-block;
+      width: 48%;
+      input {
+        width: 100%;
+      }
+    }
+    #userFname {
+      margin-right: 2%;
+    }
+    input[type='submit'] {
+      margin-top: 0.25em;
+      width: 100%;
+    }
+  }
+}

@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
   before_save { create_remember_token if (self.remember_token.blank? && self.password_digest && defined?(self.password_digest)) }
   before_save { |user| user.email = email.downcase }
 
+  has_many :contracts
+
   def display_name
     return "#{ self.fname } #{ self.lname }"
   end

@@ -1,0 +1,28 @@
+<% if @should_show_create %>
+  <div class='AbsoluteCenter' id='createAdmin'>
+    <h1>Create admin</h1>
+    <%= form_for User.new do |u| %>
+      <div id='userFname'>
+        <label>First name</label><br />
+        <%= u.text_field :fname, placeholder: 'Bob' %>
+      </div>
+      <div id='userLname'>
+        <label>Last name</label><br />
+        <%= u.text_field :lname, placeholder: 'Loblaw' %>
+      </div>
+      <div>
+        <label>Email</label><br />
+        <%= u.email_field :email, placeholder: 'bob@lawblog.info' %>
+      </div>
+      <div>
+        <label>Password</label><br />
+        <%= u.password_field :password, placeholder: 'letmein' %>
+      </div>
+      <%= u.hidden_field :is_admin, value: true %>
+      <% u.hidden_field :redirect_back, value: '/admin' %>
+      <%= u.submit "Create admin user" %>
+    <% end %>
+  </div>
+<% else %>
+  <h1>Log in</h1>
+<% end %>

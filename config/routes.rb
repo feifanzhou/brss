@@ -14,9 +14,14 @@ Brss::Application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :users
-  get 'account', to: 'users#show'
+  resources :contracts
+  resources :appointments
+  resources :items
 
+  get 'account', to: 'users#show'
   post 'login' => 'users#login', as: :login
+
+  get '/admin', to: 'admin#show'
 
   # Example resource route with options:
   #   resources :products do
