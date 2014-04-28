@@ -55,6 +55,7 @@ task :get_latest => :environment do
     end if !contract['appointments'].blank?
     contract['boxes'].each do |box|
       # TODO: Use exists? rather than returning the whole object in find
+      # TODO: Merge identical types into quantity rather than creating separate items
       item = Item.find_by_box_id(box['appID']) || Item.create(
                contract_id: ctrt.id,
                item_type: box['type_text'],
@@ -62,7 +63,8 @@ task :get_latest => :environment do
                notes: box['notes'],
                weight: box['weight'].to_f,
                box_id: box['appID'],
-               is_deleted: box['removed'] != '0'
+               is_deleted: box['removed'] != '0',
+               quantity: 1
              )
     end if !contract['boxes'].blank?
   end

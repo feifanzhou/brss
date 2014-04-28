@@ -13,6 +13,7 @@
 #  updated_at  :datetime
 #  box_id      :integer
 #  is_deleted  :boolean
+#  quantity    :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

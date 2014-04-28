@@ -13,10 +13,13 @@
 #  updated_at  :datetime
 #  box_id      :integer
 #  is_deleted  :boolean
+#  quantity    :integer
 #
 
 class Item < ActiveRecord::Base
   belongs_to :contract
+
+  validates :weight, presence: true  # Box is defined by its weight
 
   def as_json(options = {})
     super(except: [:created_at, :updated_at])
