@@ -2,6 +2,7 @@ require 'json'
 require 'open-uri'
 desc "This task grabs the latest data from the BRSS Gorges site"
 task :get_latest => :environment do
+  puts '===== Getting Gorges data ====='
   @data = JSON.load(open('http://brss.gorges.us/mobile/get_contracts.php?username=jblow&key=BRSS2013'))
   # TODO: Update with new data if Gorges DB changes for existing entry
   @data.each do |contract|
