@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 1.2'
 # Parse JSON data
 gem 'json'
 
+# Handle payments
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
 group :development do
   gem 'annotate'
   gem 'guard-livereload'

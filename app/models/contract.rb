@@ -27,7 +27,7 @@ class Contract < ActiveRecord::Base
   end
 
   def active_items
-    Item.where( contract_id: self.id, is_deleted: false )
+    Item.where( contract_id: self.id, is_deleted: false ).order(:created_at)
   end
 
   def as_json(options = {})

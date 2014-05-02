@@ -1,4 +1,5 @@
 Brss::Application.routes.draw do
+  get "supplies/create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -17,11 +18,14 @@ Brss::Application.routes.draw do
   resources :contracts
   resources :appointments
   resources :items
+  resources :supplies
 
   get 'account', to: 'users#show'
   post 'login' => 'users#login', as: :login
 
   get '/admin', to: 'admin#show'
+
+  post '/charge', to: 'appointments#create_charge'
 
   # Example resource route with options:
   #   resources :products do

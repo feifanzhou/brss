@@ -24,6 +24,7 @@ task :get_latest => :environment do
              notes: contract['notes'],
              is_cancelled: false
            )
+    pickup_appt_id = -1
     contract['appointments'].each do |appointment|
       appt_date = nil
       begin
@@ -51,8 +52,10 @@ task :get_latest => :environment do
                appointment_type: appointment['type_text'],
                timeslot_number: appointment['timeslot'].to_i,
                timeslot_text: appointment['timeslot_text'],
-               is_cancelled: false
+               is_cancelled: false,
+               packaging_hours: appointment['packaging_hours']
              )
+      pickup_appt_id = appt.id if appointment['type_text'] == 'pickup'
     end if !contract['appointments'].blank?
     contract['boxes'].each do |box|
       # TODO: Use exists? rather than returning the whole object in find
@@ -65,9 +68,18 @@ task :get_latest => :environment do
                weight: box['weight'].to_f,
                box_id: box['appID'],
                is_deleted: box['removed'] != '0',
-               quantity: 1
+               value: 100,
+               should_insure: false
              )
     end if !contract['boxes'].blank?
+    contract['supplies'].each do |supply|
+      s = Supply.find_by_supply_id(supply['supplyID'].to_i) || Supply.create(
+            appointment_id: pickup_appt_id,
+            description: supply['item'],
+            count: supply['quantity'].to_i,
+            supply_id: supply['supplyID'].to_i
+          )
+    end if !contract['supplies'].blank?
   end
   puts "Updated with data from Gorges database"
 end

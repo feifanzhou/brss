@@ -26,6 +26,11 @@
 #  is_cancelled        :boolean
 #  timeslot_number     :integer
 #  timeslot_text       :string(255)
+#  referral_source     :string(255)
+#  tip                 :integer
+#  percent_discount    :integer
+#  fuel_surcharge      :integer
+#  packaging_hours     :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

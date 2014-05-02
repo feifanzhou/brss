@@ -26,14 +26,20 @@
 #  is_cancelled        :boolean
 #  timeslot_number     :integer
 #  timeslot_text       :string(255)
+#  referral_source     :string(255)
+#  tip                 :integer
+#  percent_discount    :integer
+#  fuel_surcharge      :integer
+#  packaging_hours     :integer
 #
 
 class Appointment < ActiveRecord::Base
   validates :appointment_type, presence: true  # App requires appointment_type to not crash
 
   belongs_to :contract
+  has_many :supplies
 
   def as_json(options = {})
-    super(except: [:created_at, :updated_at])
+    super(except: [:created_at, :updated_at]).merge({ supplies: self.supplies })
   end
 end
