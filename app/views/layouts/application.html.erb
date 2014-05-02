@@ -3,7 +3,6 @@
 <head>
   <title><%= yield(:title) %><%= ' | ' if content_for? :title %>Big Red Shipping &amp; Storage</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class='<%= controller.controller_name %>'>
@@ -11,6 +10,7 @@
 <%= yield %>
 
 <script type='text/javascript' src='http://code.jquery.com/jquery-1.11.0.min.js'></script>
+<%= javascript_include_tag "application" %>
 <%= javascript_include_tag controller.controller_name %>
 </body>
 </html>
