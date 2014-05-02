@@ -12,10 +12,10 @@ class UsersController < ApplicationController
     if !params[:user][:redirect_back].blank? 
       redirect_to params[:user][:redirect_back]
     else
-      render json: {
-        success: success,
-        errors: errors
-      }
+      respond_to do |format|
+        format.html { redirect_to admin_path }
+        format.json { render json: { success: true, errors: [] } }
+      end
     end
   end
   def login
@@ -26,10 +26,10 @@ class UsersController < ApplicationController
     else
       success = false
     end
-    render json: {
-      success: success,
-      errors: success ? [] : ['Could not login with email and password']
-    }
+    respond_to do |format|
+      format.html { redirect_to admin_provision_path }
+      format.json { render json: { success: success, errors: success ? [] : ['Could not login with email and password'] } }
+    end
   end
 
   def show

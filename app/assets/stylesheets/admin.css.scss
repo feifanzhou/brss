@@ -1,33 +1,122 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#createAdmin {
-  height: 293px;
-  width: 300px;
-  #new_user {
-    display: inline-block;
-    font-weight: 300;
-    width: 100%;
-    div {
-      margin-bottom: 0.25em;
-      width: 100%;
-      input {
-        width: 100%;
-      }
-    }
-    #userFname, #userLname {
+body.admin {
+  background: image-url('greyzz.png');
+  #name {
+    display: none;
+  }
+  #createAdmin {
+    height: 293px;
+    width: 300px;
+    #new_user {
       display: inline-block;
-      width: 48%;
-      input {
+      font-weight: 300;
+      width: 100%;
+      div {
+        margin-bottom: 0.25em;
+        width: 100%;
+        input {
+          width: 100%;
+        }
+      }
+      #userFname, #userLname {
+        display: inline-block;
+        width: 48%;
+        input {
+          width: 100%;
+        }
+      }
+      #userFname {
+        margin-right: 2%;
+      }
+      input[type='submit'] {
+        margin-top: 0.25em;
         width: 100%;
       }
     }
-    #userFname {
-      margin-right: 2%;
-    }
-    input[type='submit'] {
-      margin-top: 0.25em;
+  }
+  #loginAdmin {
+    height: 270px;
+    width: 300px;
+    #new_user {
+      display: inline-block;
+      font-weight: 300;
       width: 100%;
+      div {
+        margin-bottom: 0.25em;
+        width: 100%;
+        input {
+          width: 100%;
+        }
+      }
+      input[type='submit'] {
+        margin-top: 0.25em;
+        width: 100%;
+      }
+    }
+  }
+
+  #provisionTarget {
+    #provisionsBlock {
+      background: #eee;
+      border: 1px solid transparentize(#DDD, 0.5);
+      border-radius: 4px;
+      box-shadow: 0 1px 2px 1px transparentize(#BBB, 0.35);
+      margin: 2em auto;
+      #addNewProvision {
+        border-bottom: 1px groove transparentize(#888, 0.75);
+        padding: 0.5em 0.5em 0.5em 0;
+        #addProvisionPrompt {
+          font-size: 1.35em;
+          font-weight: 600;
+          margin: 0.6em auto;
+        }
+        #addProvisionForm {
+          padding-top: 0.5em;
+          label {
+            font-size: 1.1em;
+            font-weight: 400;
+            margin-right: 0.5em;
+            margin-top: 0.5em;
+          }
+          input[type='text'] {
+            font-size: 1em;
+            height: 2em;
+            width: 70%;
+          }
+          button[type='button'] {
+            margin-top: -0.15em;
+          }
+        }
+      }
+      .ProvisionsList {
+        background: white;
+        overflow: hidden;
+        padding: 0 0.5em;
+        .ColumnLabels {
+          font-weight: 600;
+          padding: 1em 0;
+        }
+        .Provision {
+          border-top: 1px solid transparentize(#CCC, 0.5);
+          padding: 0.65em 0;
+          .Remove {
+            font-size: 1.15em;
+            opacity: 0;
+            text-align: center;
+            @include vendor-prefix(transition, opacity 0.25s);
+          }
+          &:hover {
+            .Remove {
+              opacity: 1;
+            }
+          }
+          &:nth-child(2n+1) {
+            background: transparentize($red, 0.9);
+          }
+        }
+      }
     }
   }
 }

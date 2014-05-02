@@ -12,7 +12,8 @@
  * require_tree .
  */
 @import "normalize";
-// @import "bootstrap";
+@import "bootstrap.min";
+@import "bootstrap-theme.min";
 @import "shared";
 @import "static";
 @import "users";

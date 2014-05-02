@@ -1,3 +1,4 @@
+<% provide(:title, 'Admin') %>
 <% if @should_show_create %>
   <div class='AbsoluteCenter' id='createAdmin'>
     <h1>Create admin</h1>
@@ -24,5 +25,18 @@
     <% end %>
   </div>
 <% else %>
-  <h1>Log in</h1>
+  <div class='AbsoluteCenter' id='loginAdmin'>
+    <h1>Log in</h1>
+    <%= form_for User.new, url: login_path do |u| %>
+      <div>
+        <label>Email</label><br />
+        <%= u.email_field :email, placeholder: 'bob@lawblog.info' %>
+      </div>
+      <div>
+        <label>Password</label><br />
+        <%= u.password_field :password, placeholder: 'letmein' %>
+      </div>
+      <%= u.submit "Login" %>
+    <% end %>
+  </div>
 <% end %>

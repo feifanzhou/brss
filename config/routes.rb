@@ -19,11 +19,14 @@ Brss::Application.routes.draw do
   resources :appointments
   resources :items
   resources :supplies
+  resources :provisions
 
   get 'account', to: 'users#show'
   post 'login' => 'users#login', as: :login
+  get '/users/current' => 'users#current', as: :current_user
 
-  get '/admin', to: 'admin#show'
+  get '/admin', to: 'admin#show', as: :admin
+  get '/admin/provision', to: 'admin#provision', as: :admin_provision
 
   post '/charge', to: 'appointments#create_charge'
 

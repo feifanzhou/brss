@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
 
   has_many :contracts
+  has_many :provisions  # Provisions created by this user
 
   def display_name
     return "#{ self.fname } #{ self.lname }"

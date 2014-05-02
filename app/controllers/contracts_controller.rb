@@ -1,5 +1,7 @@
 class ContractsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_filter :authenticate_provision
+  
   def index
     respond_to do |format|
       format.json { render json: Contract.all.to_json }

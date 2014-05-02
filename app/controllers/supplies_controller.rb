@@ -1,6 +1,7 @@
 class SuppliesController < ApplicationController
   skip_before_action :verify_authenticity_token
-
+  before_filter :authenticate_provision
+  
   def create
     prms = supply_params
     supply = Supply.find_by_supply_id_and_appointment_id(prms[:supply_id], prms[:appointment_id])
