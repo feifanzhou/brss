@@ -1,7 +1,8 @@
 class AppointmentsController < ApplicationController
+  include ApplicationHelper
   skip_before_action :verify_authenticity_token
   before_filter :authenticate_provision
-  
+
   def update
     appt = Appointment.find(params[:id])
     if appt.blank?
