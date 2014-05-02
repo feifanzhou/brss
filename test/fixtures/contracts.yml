@@ -10,6 +10,7 @@
 #  updated_at    :datetime
 #  notes         :text
 #  is_cancelled  :boolean
+#  half_terms    :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

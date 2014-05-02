@@ -10,6 +10,7 @@
 #  updated_at    :datetime
 #  notes         :text
 #  is_cancelled  :boolean
+#  half_terms    :integer
 #
 
 class Contract < ActiveRecord::Base
