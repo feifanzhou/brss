@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
   include ApplicationHelper
   skip_before_action :verify_authenticity_token
-  before_filter :authenticate_provision
 
   def create
+    authenticate_provision
     Item.create(item_params)
     render json: {
       success: 1,
@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    authenticate_provision
     item = Item.find(params[:id])
     if item.blank?
       render json: {
@@ -28,6 +29,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    authenticate_provision
     i = Item.find(params[:id])
     i.is_deleted = true
     i.save

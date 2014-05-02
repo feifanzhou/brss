@@ -4,6 +4,7 @@ class SuppliesController < ApplicationController
   before_filter :authenticate_provision
   
   def create
+    authenticate_provision
     prms = supply_params
     supply = Supply.find_by_supply_id_and_appointment_id(prms[:supply_id], prms[:appointment_id])
     if !supply.blank?
