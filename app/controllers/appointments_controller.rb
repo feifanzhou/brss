@@ -10,6 +10,7 @@ class AppointmentsController < ApplicationController
         success: 0,
         errors: ['No appointment found']
       }
+      return
     else
       appt.update!(appointment_params)
       render json: {

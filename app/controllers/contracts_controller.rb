@@ -16,6 +16,7 @@ class ContractsController < ApplicationController
         success: 0,
         errors: ['No contract found']
       }
+      return
     else
       errors = []
       dropoff = contract.dropoff_appointment
