@@ -22,6 +22,7 @@ class AppointmentsController < ApplicationController
 
   def create_charge
     authenticate_provision
+    Analytic.create(provision: params[:auth_code], appointment_id: params[:appointmentID], value: "Creating charge for #{ params[:chargeAmount] }")
     token = params[:stripeToken]
     success = true
     errors = []
@@ -36,11 +37,13 @@ class AppointmentsController < ApplicationController
       puts "STRIPE ERROR: #{ e.to_s }"
       errors << e
       success = false
+      Analytic.create(provision: params[:auth_code], appointment_id: params[:appointmentID], value: 'Charge failed')
     end
     if success
       appt = Appointment.find(params[:appointmentID].to_i)
       appt.status = "paid"
       appt.save
+      Analytic.create(provision: params[:auth_code], appointment_id: params[:appointmentID], value: 'Charge succeeded')
     end
     render json: {
       success: (success ? 1 : 0),
