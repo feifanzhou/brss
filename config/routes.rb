@@ -28,6 +28,8 @@ Brss::Application.routes.draw do
 
   get '/admin', to: 'admin#show', as: :admin
   get '/admin/provision', to: 'admin#provision', as: :admin_provision
+  get '/admin/refresh', to: 'admin#refresh', as: :admin_refresh
+  post '/admin/refresh', to: 'admin#do_refresh'
 
   post '/charge', to: 'appointments#create_charge'
 

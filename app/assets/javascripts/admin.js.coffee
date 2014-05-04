@@ -151,3 +151,16 @@ ProvisionsRoot = React.createClass
       ]
 provisionTarget = document.getElementById('provisionTarget')
 React.renderComponent(ProvisionsRoot(), provisionTarget) if provisionTarget != null
+
+$('body').on('click', '#updateContracts', ->
+  $('#wait').html('Refreshing&hellip;')
+  $.ajax '/admin/refresh',
+    type: 'POST',
+    dataType: 'json',
+    error: (jqXHR, textStatus, errorThrown) ->
+      $('#wait').html('')
+      alert('There was a problem refreshing contracts')
+    success: (data, textStatus, jqXHR) ->
+      $('#wait').html('')
+      alert('Contracts refreshed')
+)

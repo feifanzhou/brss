@@ -8,4 +8,9 @@ class AdminController < ApplicationController
   def provision
     @curr_name = current_user.display_name
   end
+
+  def do_refresh
+    get_latest_from_gorges
+    render json: { success: 1, errors: [] }
+  end
 end
