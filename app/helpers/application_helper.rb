@@ -73,6 +73,8 @@ module ApplicationHelper
                  packaging_hours: appointment['packaging_hours'],
                  rep_name: rep_name
                )
+        appt.rep_name = rep_name # Reassign
+        appt.save
         pickup_appt_id = appt.id if appointment['type_text'] == 'pickup'
       end if !contract['appointments'].blank?
       contract['boxes'].each do |box|
