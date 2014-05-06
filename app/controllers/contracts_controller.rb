@@ -3,7 +3,7 @@ class ContractsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    provision = Provision.find_by_code(params[:auth_code])
+    provision = Provision.find_by_code(params[:auth_code]) # Will get the first result — this is intentional for security
     return head(:forbidden) if provision.blank? || provision.is_deleted
     rep_name = provision.rep_name
     render json: Contract.all.map { |c| c.as_json_with_appointments_for_rep(rep_name) }
