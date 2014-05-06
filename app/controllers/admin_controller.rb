@@ -10,7 +10,7 @@ class AdminController < ApplicationController
   end
 
   def do_refresh
-    get_latest_from_gorges
+    get_all_from_gorges
     render json: { success: 1, errors: [] }
   end
 end

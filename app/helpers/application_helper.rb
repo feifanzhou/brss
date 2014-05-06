@@ -18,9 +18,9 @@ module ApplicationHelper
     return head(:forbidden) if prov.blank? || prov.is_deleted
   end
 
-  def get_latest_from_gorges
+  def get_latest_from_gorges(rep_name)
     puts '===== Getting Gorges data ====='
-    @data = JSON.load(open('http://brss.gorges.us/mobile/get_contracts.php?username=jblow&key=BRSS2013'))
+    @data = JSON.load(open("http://brss.gorges.us/mobile/get_contracts.php?username=#{ rep_name }&key=BRSS2013"))
     # TODO: Update with new data if Gorges DB changes for existing entry
     @data.each do |contract|
       user = User.find_by_email(contract['email']) || User.create(
@@ -70,7 +70,8 @@ module ApplicationHelper
                  timeslot_number: appointment['timeslot'].to_i,
                  timeslot_text: appointment['timeslot_text'],
                  is_cancelled: false,
-                 packaging_hours: appointment['packaging_hours']
+                 packaging_hours: appointment['packaging_hours'],
+                 rep_name: rep_name
                )
         pickup_appt_id = appt.id if appointment['type_text'] == 'pickup'
       end if !contract['appointments'].blank?
@@ -99,5 +100,11 @@ module ApplicationHelper
       end if !contract['supplies'].blank?
     end
     puts "Updated with data from Gorges database"
+  end
+
+  def get_all_from_gorges
+    Provision.where('is_deleted=false').map(&:rep_name).each do |name|
+      get_latest_from_gorges(name)
+    end
   end
 end

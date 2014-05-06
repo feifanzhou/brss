@@ -31,7 +31,12 @@ class Contract < ActiveRecord::Base
     Item.where( contract_id: self.id, is_deleted: false ).order(:created_at)
   end
 
+  def as_json_with_appointments_for_rep(rep_name)
+    appts = Appointment.where("contract_id=#{ self.id } AND rep_name='#{ rep_name }'")
+    self.as_json.merge({ appointments: appts })
+  end
+
   def as_json(options = {})
-    super(except: [:created_at, :updated_at, :user_id]).merge({ dropoff_date: self.dropoff_date, appointments: self.appointments, items: self.active_items, user: self.user })
+    super(except: [:created_at, :updated_at, :user_id]).merge({ dropoff_date: self.dropoff_date, items: self.active_items, user: self.user })
   end
 end

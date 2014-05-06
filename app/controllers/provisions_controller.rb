@@ -10,6 +10,7 @@ class ProvisionsController < ApplicationController
 
   def create
     success = false
+    p = nil
     if can_edit?
       success = true
       p = Provision.new(provision_params)
@@ -17,7 +18,7 @@ class ProvisionsController < ApplicationController
       p.save
     end
     respond_to do |format|
-      format.json { render json: { success: success, errors: [] } }
+      format.json { render json: { success: success, errors: [], provision: p.as_json } }
     end
   end
 
@@ -40,6 +41,6 @@ class ProvisionsController < ApplicationController
   end
 
   def provision_params
-    params.require(:provision).permit(:code, :description, :is_deleted)
+    params.require(:provision).permit(:code, :description, :is_deleted, :rep_name)
   end
 end

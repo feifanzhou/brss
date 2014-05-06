@@ -5,8 +5,9 @@
 AddNewProvision = React.createClass
   addProp: ->
     codeNode = @refs.provisionCode.getDOMNode()
+    repNode = @refs.repName.getDOMNode()
     descNode = @refs.provisionDescription.getDOMNode()
-    @props.addProvision(codeNode.value, descNode.value)
+    @props.addProvision(codeNode.value, repNode.value, descNode.value)
     codeNode.value = ''
     descNode.value = ''
   render: ->
@@ -27,7 +28,7 @@ AddNewProvision = React.createClass
               id: 'addProvisionForm'
               children: [
                 React.DOM.div
-                  className: 'col-xs-12 col-md-5'
+                  className: 'col-xs-12 col-md-4'
                   children: [
                     React.DOM.label
                       children: 'Provision code'
@@ -38,20 +39,31 @@ AddNewProvision = React.createClass
                       ref: 'provisionCode'
                   ]
                 React.DOM.div
-                  className: 'col-xs-12 col-md-5'
+                  className: 'col-xs-12 col-md-3'
+                  children: [
+                    React.DOM.label
+                      children: 'Rep'
+                    React.DOM.input
+                      id: 'newRepName'
+                      type: 'text'
+                      placeholder: 'jblow'
+                      ref: 'repName'
+                  ]
+                React.DOM.div
+                  className: 'col-xs-12 col-md-4'
                   children: [
                     React.DOM.label
                       children: 'Description'
                     React.DOM.input
                       id: 'newProvisionDescription'
                       type: 'text'
-                      placeholder: 'Field rep names'
+                      placeholder: 'Other names'
                       ref: 'provisionDescription'
                   ]
                 React.DOM.button
                   type: 'button'
-                  className: 'btn btn-primary col-md-2'
-                  children: 'Save provision'
+                  className: 'btn btn-primary col-md-1'
+                  children: 'Save'
                   onClick: _t.addProp
               ]
       ]
@@ -74,13 +86,16 @@ ProvisionsList = React.createClass
             className: 'Code col-xs-2'
             children: provision.code
           React.DOM.span
-            className: 'Description col-xs-3'
+            className: 'Name col-xs-2'
+            children: provision.rep_name
+          React.DOM.span
+            className: 'Description col-xs-2'
             children: provision.description
           React.DOM.span
             className: 'CreatedAt col-xs-3'
             children: provision.created_at
           React.DOM.span
-            className: 'Creator col-xs-3'
+            className: 'Creator col-xs-2'
             children: provision.creator
         ]
     c.unshift(
@@ -94,13 +109,16 @@ ProvisionsList = React.createClass
             className: 'col-xs-2'
             children: 'Provision code'
           React.DOM.span
-            className: 'col-xs-3'
+            className: 'col-xs-2'
+            children: 'Rep name'
+          React.DOM.span
+            className: 'col-xs-2'
             children: 'Description'
           React.DOM.span
             className: 'col-xs-3'
             children: 'Creation time'
           React.DOM.span
-            className: 'col-xs-3'
+            className: 'col-xs-2'
             children: 'Creator'
         ]
     )
@@ -116,17 +134,29 @@ ProvisionsRoot = React.createClass
     $.get ('/provisions.json'), (provisions) ->
       return if !provisions
       _t.setState(provisions: provisions)
-  addProvision: (code, desc) ->
+  addProvision: (code, name, desc) ->
+    _t = this
     provision = {
       code: code,
       description: desc,
+      rep_name: name,
       is_deleted: false
     }
     $.post '/provisions',
       provision: provision
+      (data) -> 
+        # Replace with provision containing ID
+        prov = data.provision
+        alert(JSON.stringify(prov))
+        newProvisions = _t.state.provisions
+        # Will cause mismatch issues if another provision is added before the first one finishes round trip
+        newProvisions.splice(-1, 1)
+        newProvisions.push(prov)
+        _t.setState(provisions: newProvisions)
     prov = {
       code: code,
       description: desc,
+      rep_name: name
       creator: document.getElementById('name').innerHTML,
       created_at: (new Date()).toUTCString()
     }

@@ -31,6 +31,7 @@
 #  percent_discount    :integer
 #  fuel_surcharge      :integer
 #  packaging_hours     :integer
+#  rep_name            :string(255)
 #
 
 class Appointment < ActiveRecord::Base

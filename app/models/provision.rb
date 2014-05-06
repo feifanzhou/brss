@@ -9,6 +9,7 @@
 #  is_deleted  :boolean
 #  created_at  :datetime
 #  updated_at  :datetime
+#  rep_name    :string(255)
 #
 
 class Provision < ActiveRecord::Base
