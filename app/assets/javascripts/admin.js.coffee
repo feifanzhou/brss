@@ -147,7 +147,6 @@ ProvisionsRoot = React.createClass
       (data) -> 
         # Replace with provision containing ID
         prov = data.provision
-        alert(JSON.stringify(prov))
         newProvisions = _t.state.provisions
         # Will cause mismatch issues if another provision is added before the first one finishes round trip
         newProvisions.splice(-1, 1)
