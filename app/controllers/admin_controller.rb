@@ -6,6 +6,10 @@ class AdminController < ApplicationController
   end
 
   def provision
+    redirect_to admin_dashboard_path
+  end
+
+  def dashboard
     @curr_name = current_user.display_name
   end
 
