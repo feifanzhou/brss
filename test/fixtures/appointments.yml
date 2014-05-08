@@ -32,6 +32,7 @@
 #  fuel_surcharge      :integer
 #  packaging_hours     :integer
 #  rep_name            :string(255)
+#  is_dollar_discount  :boolean
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

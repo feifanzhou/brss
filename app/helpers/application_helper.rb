@@ -71,7 +71,8 @@ module ApplicationHelper
                  timeslot_text: appointment['timeslot_text'],
                  is_cancelled: false,
                  packaging_hours: appointment['packaging_hours'],
-                 rep_name: rep_name
+                 rep_name: rep_name,
+                 is_dollar_discount: false
                )
         appt.rep_name = rep_name # Reassign
         appt.save
