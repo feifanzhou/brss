@@ -50,6 +50,6 @@ class ContractsController < ApplicationController
 
   private
   def contract_params
-    params.require(:contract).permit(:dropoff_date)
+    params.require(:contract).permit(:dropoff_date, :half_terms)
   end
 end
