@@ -13,7 +13,7 @@ class AppointmentsController < ApplicationController
       return
     else
       appt_prms = appointment_params
-      appt.update!(appt_prms)
+      appt.update!(appt_prms.except(:half_terms))
       if !appt_prms[:half_terms].blank?
         ctrt = appt.contract
         ctrt.half_terms = appt_prms[:half_terms].to_i
