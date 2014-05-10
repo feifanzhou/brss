@@ -36,6 +36,26 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def team
+    appointment = Appointment.find(params[:id])
+    if appointment.blank?
+      render json: {
+        success: false,
+        errors: ['No appointment found']
+      }
+      return
+    else
+      team = params[:appointment][:team]
+      appointment.team = team
+      appointment.save
+      render json: {
+        success: true,
+        errors: []
+      }
+      return
+    end
+  end
+
   def create_charge
     authenticate_provision
     Analytic.create(provision: params[:auth_code], appointment_id: params[:appointmentID], value: "Creating charge for #{ params[:chargeAmount] }")

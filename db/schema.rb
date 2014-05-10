@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140510144350) do
+ActiveRecord::Schema.define(version: 20140510224615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20140510144350) do
     t.decimal  "app_total_tax"
     t.decimal  "app_total_order"
     t.decimal  "app_total_final"
+    t.string   "team"
   end
 
   create_table "contracts", force: true do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20140510144350) do
     t.text     "notes"
     t.boolean  "is_cancelled"
     t.integer  "half_terms"
+    t.string   "pallet"
   end
 
   create_table "items", force: true do |t|

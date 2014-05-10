@@ -11,6 +11,7 @@
 #  notes         :text
 #  is_cancelled  :boolean
 #  half_terms    :integer
+#  pallet        :string(255)
 #
 
 class Contract < ActiveRecord::Base

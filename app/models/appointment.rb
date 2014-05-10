@@ -42,6 +42,7 @@
 #  app_total_tax       :decimal(, )
 #  app_total_order     :decimal(, )
 #  app_total_final     :decimal(, )
+#  team                :string(255)
 #
 
 class Appointment < ActiveRecord::Base

@@ -31,6 +31,8 @@ Brss::Application.routes.draw do
   get '/admin/dashboard', to: 'admin#dashboard', as: :admin_dashboard
   get '/admin/refresh', to: 'admin#refresh', as: :admin_refresh
   post '/admin/refresh', to: 'admin#do_refresh'
+  patch '/contracts/:id/pallet', to: 'contracts#pallet'
+  patch '/appointments/:id/team', to: 'appointments#team'
 
   post '/charge', to: 'appointments#create_charge'
 

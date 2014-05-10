@@ -90,4 +90,32 @@
       </table>
     </div>
   </div>
+  <div class='Hidden' id='appointmentID'><%= @appt.id %></div>
+  <div class='Hidden' id='contractID'><%= @contract.id %></div>
+  <div class='row'>
+    <div class='col-xs-12 col-md-5'>
+      <div class='row'>
+        <label class='col-xs-3'>Pallet</label>
+        <input class='col-xs-9' type='text' placeholder='ABC123' id='pallet' value='<%= @contract.pallet %>' />
+        <div class='col-xs-9 col-xs-offset-3'>
+          <div class='row'>
+            <button class='btn col-xs-12' type='submit' id='savePallet'>Save pallet</button>
+            <p class='col-xs-12' id='savePalletResults'></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='col-xs-12 col-md-5 col-md-offset-1'>
+      <div class='row'>
+        <label class='col-xs-3'>Field team</label>
+        <input class='col-xs-9' type='text' placeholder='Maverick + Goose' id='team' value='<%= @appt.team %>' />
+        <div class='col-xs-9 col-xs-offset-3'>
+          <div class='row'>
+            <button class='btn col-xs-12' type='submit' id='saveTeam'>Save team</button>
+            <p class='col-xs-12' id='saveTeamResults'></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

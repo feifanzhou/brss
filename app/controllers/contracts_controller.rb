@@ -48,6 +48,26 @@ class ContractsController < ApplicationController
     end
   end
 
+  def pallet
+    contract = Contract.find(params[:id])
+    if contract.blank?
+      render json: {
+        success: false,
+        errors: ['No contract found']
+      }
+      return
+    else
+      pallet = params[:contract][:pallet]
+      contract.pallet = pallet
+      contract.save
+      render json: {
+        success: true,
+        errors: []
+      }
+      return
+    end
+  end
+
   private
   def contract_params
     params.require(:contract).permit(:dropoff_date, :half_terms)
