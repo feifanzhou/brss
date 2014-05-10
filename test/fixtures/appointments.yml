@@ -33,6 +33,15 @@
 #  packaging_hours     :integer
 #  rep_name            :string(255)
 #  is_dollar_discount  :boolean
+#  viewing_code        :string(255)
+#  app_items_total     :decimal(, )
+#  app_supplies_total  :decimal(, )
+#  app_insurance_total :decimal(, )
+#  app_packing_total   :decimal(, )
+#  app_subtotal        :decimal(, )
+#  app_total_tax       :decimal(, )
+#  app_total_order     :decimal(, )
+#  app_total_final     :decimal(, )
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

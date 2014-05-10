@@ -1,0 +1,92 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-12' id='appointmentHeader'>
+      <h1>Appointment <span id='appointmentID'><%= @appt.id %></span>: <span id='appointmentUserName'><%= @user.display_name %></span></h1>
+      <p id='appointmentDetails'>
+        <span class='<%= 'text-success' if @appt.status == 'paid' %>' id='appointmentStates'>Status: <%= @appt.status %></span> | 
+        <span id='userEmail'><a href='mailto:<%= @user.email %>'><%= @user.email %></a></span> |
+        <span id='userPhone'><a href='tel://<%= @user.phone %>'><%= @user.phone %></a></span>
+      </p>
+  </div>
+  <div class='row'>
+    <div class='col-xs-12 col-md-3' id='appointmentTotals'>
+      <table class='table table-condensed table-striped' id='itemsTable'>
+        <tr><th colspan='2'><h2>Totals</h2></th></tr>
+        <tr>
+          <td>Half-terms</td><td><%= @contract.half_terms %></td>
+        </tr>
+        <tr>
+          <td>Items total</td><td>$<%= '%.2f' % @appt.app_items_total.to_f %></td>
+        </tr>
+        <tr>
+          <td>Supplies total</td><td>$<%= '%.2f' % @appt.app_supplies_total.to_f %></td>
+        </tr>
+        <tr>
+          <td>Insurance total</td><td>$<%= '%.2f' % @appt.app_insurance_total.to_f %></td>
+        </tr>
+        <tr>
+          <td>Packing fee</td><td>$<%= '%.2f' % @appt.app_packing_total.to_f %></td>
+        </tr>
+        <tr>
+          <td>Fuel surcharge</td><td><%= @appt.fuel_surcharge %></td></tr>
+        </tr>
+        <tr>
+          <td>Discount</td><td><%= '$' if @appt.is_dollar_discount %><%= @appt.percent_discount %><%= '%' if !@appt.is_dollar_discount %></td>
+        </tr>
+        <tr>
+          <td>Subtotal</td><td>$<%= '%.2f' % @appt.app_subtotal.to_f %></td>
+        </tr>
+        <tr>
+          <td>8% tax</td><td>$<%= '%.2f' % @appt.app_total_tax.to_f %></td>
+        </tr>
+        <tr>
+          <td>Order total</td><td>$<%= '%.2f' % @appt.app_total_order.to_f %></td>
+        </tr>
+        <tr>
+          <td>Tip</td><td><%= @appt.tip %></td>
+        </tr>
+        <tr>
+          <td>Total</td><td>$<%= '%.2f' % @appt.app_total_final.to_f %></td>
+        </tr>
+      </table>
+    </div>
+    <div class='col-xs-12 col-md-6' id='appointmentItems'>
+      <table class='table table-condensed table-striped' id='itemsTable'>
+        <tr><th colspan='6'><h2>Items</h2></th></tr>
+        <tr>
+          <th>ID</th>
+          <th>Type</th>
+          <th>Weight (lb)</th>
+          <th>Custom price</th>
+          <th>Value</th>
+          <th>Insurance</th>
+        </tr>
+        <% @items.each do |i| %>
+          <tr>
+            <td><%= i.id %></td>
+            <td><%= i.item_type%></td>
+            <td><%= i.weight.to_f %></td>
+            <td>$<%= '%.2f' % i.custom_price.to_f %></td>
+            <td><%= i.value %></td>
+            <td><%= i.should_insure %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class='col-xs-12 col-md-3' id='appointmentSupplies'>
+      <table class='table table-condensed table-striped' id='itemsTable'>
+        <tr><th colspan='2'><h2>Supplies</h2></th></tr>
+        <tr>
+          <th>Type</th>
+          <th>Count</th>
+        </tr>
+        <% @supplies.each do |s| %>
+          <tr>
+            <td><%= s.description%></td>
+            <td><%= s.count %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
