@@ -53,4 +53,11 @@ class Appointment < ActiveRecord::Base
   def as_json(options = {})
     super(except: [:created_at, :updated_at]).merge({ supplies: self.supplies })
   end
+
+  def supplies_description
+    desc = []
+    self.supplies.each do |s|
+      desc << "#{ s.name }: #{ s.count }"
+    end
+    return desc.join (' | ')
 end
