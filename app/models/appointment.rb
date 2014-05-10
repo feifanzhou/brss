@@ -59,5 +59,5 @@ class Appointment < ActiveRecord::Base
     self.supplies.each do |s|
       desc << "#{ s.name }: #{ s.count }"
     end
-    desc.count == 0 ? 'No supplies' : desc.join (' | ')
+    desc.count == 0 ? 'No supplies' : desc.join(' | ')
 end
