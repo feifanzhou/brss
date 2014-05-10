@@ -51,7 +51,7 @@ class AppointmentsController < ApplicationController
         amount: params[:chargeAmount].to_i,
         currency: 'usd',
         card: token,
-        description: "https://brss.herokuapp.com/appointments/#{ appt.id }?vc=#{ viewing_code }"
+        description: "#{ params[:chargeDescription] } | https://brss.herokuapp.com/appointments/#{ appt.id }?vc=#{ viewing_code }"
       )
     rescue Stripe::CardError => e
       puts "STRIPE ERROR: #{ e.to_s }"
