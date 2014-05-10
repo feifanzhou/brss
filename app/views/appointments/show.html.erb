@@ -62,12 +62,13 @@
           <th>Insurance</th>
         </tr>
         <% @items.each do |i| %>
+          <% next if i.is_deleted %>
           <tr>
             <td><%= i.id %></td>
             <td><%= i.item_type%></td>
             <td><%= i.weight.to_f %></td>
             <td>$<%= '%.2f' % i.custom_price.to_f %></td>
-            <td>$<%= '%.2f' % i.value %></td>
+            <td>$<%= i.value %></td>
             <td><%= i.should_insure %></td>
           </tr>
         <% end %>
@@ -81,7 +82,6 @@
           <th>Count</th>
         </tr>
         <% @supplies.each do |s| %>
-          <% next if s.is_deleted %>
           <tr>
             <td><%= s.name %></td>
             <td><%= s.count %></td>

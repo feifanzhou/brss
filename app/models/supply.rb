@@ -15,13 +15,14 @@ class Supply < ActiveRecord::Base
   belongs_to :appointment
 
   def name
-    if self.supply_id == 1 return 'Tape dispenser'
-    elsif self.supply_id == 2 return 'Bubble wrap'
-    elsif self.supply_id == 7 return 'Packing tape'
-    elsif self.supply_id == 26 return 'Small box'
-    elsif self.supply_id == 27 return 'Large box'
-    elsif self.supply_id == 35 return 'TV box'
-    else return 'Unknown'
+    name = ''
+    if self.supply_id == 1 then name = 'Tape dispenser'
+    elsif self.supply_id == 2 then name = 'Bubble wrap'
+    elsif self.supply_id == 7 then name = 'Packing tape'
+    elsif self.supply_id == 26 then name = 'Small box'
+    elsif self.supply_id == 27 then name = 'Large box'
+    elsif self.supply_id == 35 then name = 'TV box'
+    else name = 'Unknown'
     end
   end
 end
