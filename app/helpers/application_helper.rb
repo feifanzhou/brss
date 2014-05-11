@@ -21,6 +21,7 @@ module ApplicationHelper
   def get_latest_from_gorges(rep_name)
     puts '===== Getting Gorges data ====='
     @data = JSON.load(open("http://brss.gorges.us/mobile/get_contracts.php?username=#{ rep_name }&key=BRSS2013"))
+    return if @data.blank?
     # TODO: Update with new data if Gorges DB changes for existing entry
     @data.each do |contract|
       user = User.find_by_email(contract['email']) || User.create(
