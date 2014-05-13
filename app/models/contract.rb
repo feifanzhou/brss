@@ -38,6 +38,6 @@ class Contract < ActiveRecord::Base
   end
 
   def as_json(options = {})
-    super(except: [:created_at, :updated_at, :user_id]).merge({ dropoff_date: self.dropoff_date, items: self.active_items, user: self.user })
+    super(except: [:created_at, :updated_at, :user_id]).merge({ appointments: appointments, dropoff_date: self.dropoff_date, items: items, user: user })
   end
 end

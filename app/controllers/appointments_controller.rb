@@ -100,7 +100,7 @@ class AppointmentsController < ApplicationController
       permit(:insurance_cost, :notes, :on_campus, :coupon_code, :referral_source, :tip, 
         :percent_discount, :fuel_surcharge, :packaging_hours, :half_terms,
         :app_items_total, :app_supplies_total, :app_insurance_total, :app_packing_total,
-        :app_subtotal, :app_total_tax, :app_total_order, :app_total_final
+        :app_subtotal, :app_total_tax, :app_total_order, :app_total_final, :team
       )
   end
 end

@@ -6,7 +6,8 @@ class ContractsController < ApplicationController
     provision = Provision.find_by_code(params[:auth_code]) # Will get the first result — this is intentional for security
     return head(:forbidden) if provision.blank? || provision.is_deleted
     rep_name = provision.rep_name
-    render json: Contract.all.map { |c| c.as_json_with_appointments_for_rep(rep_name) }
+    render json: Contract.includes(:appointments, :items, :user).where('appointments.rep_name = ? AND items.is_deleted = ?', rep_name, false).to_json
+    # render json: Contract.all.map { |c| c.as_json_with_appointments_for_rep(rep_name) }
   end
 
   def update
