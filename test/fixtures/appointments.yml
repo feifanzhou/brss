@@ -27,7 +27,7 @@
 #  timeslot_number     :integer
 #  timeslot_text       :string(255)
 #  referral_source     :string(255)
-#  tip                 :integer
+#  tip                 :decimal(, )
 #  percent_discount    :integer
 #  fuel_surcharge      :integer
 #  packaging_hours     :integer

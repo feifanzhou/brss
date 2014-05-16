@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140510224615) do
+ActiveRecord::Schema.define(version: 20140516004519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140510224615) do
     t.integer  "timeslot_number"
     t.string   "timeslot_text"
     t.string   "referral_source"
-    t.integer  "tip"
+    t.decimal  "tip"
     t.integer  "percent_discount"
     t.integer  "fuel_surcharge"
     t.integer  "packaging_hours"
