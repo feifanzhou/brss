@@ -33,7 +33,7 @@ class Contract < ActiveRecord::Base
   end
 
   def as_json_with_appointments_for_rep(rep_name)
-    appts = Appointment.where("contract_id=#{ self.id } AND rep_name='#{ rep_name }'")
+    appts = Appointment.where("contract_id=#{ self.id } AND rep_name='#{ rep_name }' AND date >= ?", Date.today)
     self.as_json.merge({ appointments: appts })
   end
 
